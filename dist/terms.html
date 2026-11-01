@@ -1,57 +1,105 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" data-theme="dark">
+<html lang="ar" dir="rtl" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PDFly — شروط الاستخدام | Terms of Service</title>
-  <link rel="icon" type="image/png" href="/logo.png">
+  <title>PDFly — شروط الاستخدام | Terms of Use</title>
+  <meta name="description" content="PDFly Terms of Use — Free, open, and private document processing tools.">
+  <link rel="icon" type="image/png" href="./logo-badge.png">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
-  <link rel="stylesheet" crossorigin href="/assets/styles-YwZGikJk.css">
+  <link rel="stylesheet" crossorigin href="./assets/styles-YwZGikJk.css">
 </head>
 <body>
   <header class="header">
     <div class="container header-inner">
-      <a href="/" class="logo">
-        <img src="/logo.png" alt="PDFly Logo" class="logo-img">
-        <span class="font-latin logo-brand-text">PDFly</span>
+      <a href="/" class="logo" aria-label="PDFly Home">
+        <img src="./logo-badge.png" alt="PDFly" class="logo-badge-img" />
       </a>
       <div class="header-controls">
-        <a href="/" class="btn btn-secondary">
+        <a href="/" class="btn btn-secondary" style="gap:8px;">
           <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
           <span>الرئيسية</span>
         </a>
       </div>
     </div>
   </header>
-  <main class="container section" style="padding-top:calc(var(--header-height) + 40px);max-width:800px;">
-    <div style="background:var(--bg-elevated);padding:var(--space-8);border-radius:var(--radius-lg);border:1px solid var(--border-primary);">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;color:var(--accent);">
-        <i data-lucide="file-check" style="width:36px;height:36px;"></i>
-        <h1 style="font-size:1.8rem;margin:0;">شروط الاستخدام</h1>
-      </div>
-      <p style="font-size:1.1rem;line-height:1.8;color:var(--text-secondary);margin-bottom:20px;">
-        منصة PDFly متاحة للاستخدام المباشر لجميع الأفراد والمؤسسات لتسهيل إدارة المستندات وتعديلها وتحويلها دون قيود خوادم.
-      </p>
-      <div style="display:grid;gap:16px;margin:24px 0;">
-        <div style="display:flex;gap:12px;align-items:flex-start;">
-          <i data-lucide="check" style="width:20px;height:20px;color:var(--success);flex-shrink:0;margin-top:4px;"></i>
-          <span>جميع الأدوات تعمل محلياً على مسؤولية المستخدم الخاصة بمعالجة ملفاته.</span>
+
+  <main class="container section" style="padding-top:calc(var(--header-height) + 48px);max-width:880px;padding-bottom:80px;">
+    <div style="background:var(--bg-elevated);padding:var(--space-10) var(--space-8);border-radius:var(--radius-xl);border:1px solid var(--border-primary);box-shadow:var(--shadow-lg);">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:28px;">
+        <div style="background:var(--accent-subtle);padding:14px;border-radius:var(--radius-lg);">
+          <i data-lucide="scroll-text" style="width:32px;height:32px;color:var(--accent);"></i>
         </div>
-        <div style="display:flex;gap:12px;align-items:flex-start;">
-          <i data-lucide="check" style="width:20px;height:20px;color:var(--success);flex-shrink:0;margin-top:4px;"></i>
-          <span>لا تحتفظ المنصة بأي نسخ من الملفات أو البيانات الشخصية إطلاقاً.</span>
+        <div>
+          <h1 style="font-size:1.9rem;margin:0;font-weight:700;">شروط الاستخدام</h1>
+          <p style="font-size:0.95rem;color:var(--text-tertiary);margin:4px 0 0;">Terms of Use</p>
         </div>
       </div>
-      <div style="margin-top:30px;">
-        <a href="/" class="btn btn-primary">
-          <i data-lucide="layout-grid" style="width:18px;height:18px;"></i>
-          <span>العودة للأدوات</span>
-        </a>
+
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <div>
+          <h2 style="font-size:1.15rem;font-weight:600;margin-bottom:10px;color:var(--text-primary);">
+            <i data-lucide="check-square" style="width:18px;height:18px;display:inline;vertical-align:text-bottom;margin-left:6px;color:var(--accent);"></i>
+            قبول الشروط
+          </h2>
+          <p style="font-size:0.95rem;line-height:1.8;color:var(--text-secondary);">
+            باستخدامك لمنصة PDFly فإنك توافق على هذه الشروط والأحكام. الخدمة متاحة مجاناً للاستخدام الشخصي والتجاري بدون أي قيود.
+          </p>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.15rem;font-weight:600;margin-bottom:10px;color:var(--text-primary);">
+            <i data-lucide="file-check" style="width:18px;height:18px;display:inline;vertical-align:text-bottom;margin-left:6px;color:var(--accent);"></i>
+            طبيعة الخدمة
+          </h2>
+          <p style="font-size:0.95rem;line-height:1.8;color:var(--text-secondary);">
+            PDFly يوفر أدوات لمعالجة المستندات تعمل بالكامل في المتصفح. الخدمة تعتمد على مكتبات مفتوحة المصدر ولا تتضمن أي معالجة من جانب الخادم. النتائج تعتمد على قدرات جهازك والمتصفح المستخدم.
+          </p>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.15rem;font-weight:600;margin-bottom:10px;color:var(--text-primary);">
+            <i data-lucide="shield" style="width:18px;height:18px;display:inline;vertical-align:text-bottom;margin-left:6px;color:var(--accent);"></i>
+            المسؤولية
+          </h2>
+          <p style="font-size:0.95rem;line-height:1.8;color:var(--text-secondary);">
+            يتم تقديم PDFly "كما هو" بدون ضمانات صريحة أو ضمنية. لا نتحمل المسؤولية عن أي ضرر ناتج عن استخدام الأدوات. يُنصح دائماً بالاحتفاظ بنسخة احتياطية من ملفاتك الأصلية قبل إجراء أي تحويل.
+          </p>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.15rem;font-weight:600;margin-bottom:10px;color:var(--text-primary);">
+            <i data-lucide="scale" style="width:18px;height:18px;display:inline;vertical-align:text-bottom;margin-left:6px;color:var(--accent);"></i>
+            الملكية الفكرية
+          </h2>
+          <p style="font-size:0.95rem;line-height:1.8;color:var(--text-secondary);">
+            تصميم وواجهة PDFly محمية بحقوق الملكية الفكرية. المكتبات البرمجية المستخدمة مرخصة بموجب رخص مفتوحة المصدر وفقاً لشروط مطوريها.
+          </p>
+        </div>
+
+        <div>
+          <h2 style="font-size:1.15rem;font-weight:600;margin-bottom:10px;color:var(--text-primary);">
+            <i data-lucide="refresh-cw" style="width:18px;height:18px;display:inline;vertical-align:text-bottom;margin-left:6px;color:var(--accent);"></i>
+            تحديثات الشروط
+          </h2>
+          <p style="font-size:0.95rem;line-height:1.8;color:var(--text-secondary);">
+            نحتفظ بحق تعديل هذه الشروط في أي وقت. ستكون التعديلات سارية فور نشرها على هذه الصفحة. نوصي بمراجعة هذه الصفحة بشكل دوري.
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--border-primary);text-align:center;">
+        <p style="font-size:0.85rem;color:var(--text-tertiary);">آخر تحديث: نوفمبر 2026 | PDFly</p>
       </div>
     </div>
   </main>
+
   <script>
-    window.addEventListener('DOMContentLoaded', () => { if (window.lucide) window.lucide.createIcons(); });
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) window.lucide.createIcons();
+      const saved = localStorage.getItem('pdfly-theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+    });
   </script>
 </body>
 </html>
