@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDFly — الأداة</title>
+  <meta name="description" content="Process your documents directly in the browser with PDFly.">
+  <link rel="icon" type="image/png" href="/logo-badge.png">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <!-- PDF.js Standalone Browser Build -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script type="module" crossorigin src="/assets/tool-BOpp3Du_.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/preload-helper-B5titDsp.js">
+  <link rel="stylesheet" crossorigin href="/assets/styles-YwZGikJk.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="/" class="logo" id="logo" aria-label="PDFly Home">
+        <img src="/logo-badge.png" alt="PDFly" class="logo-badge-img" />
+      </a>
+
+      <nav class="nav-links" id="desktopNav" aria-label="Main navigation">
+        <a href="/#quick-tools" class="nav-link" data-i18n="nav.tools">الأدوات</a>
+        <a href="/#all-tools" class="nav-link" data-i18n="nav.allTools">جميع الأدوات</a>
+        <a href="/about.html" class="nav-link" data-i18n="nav.about">حول</a>
+      </nav>
+
+      <div class="header-controls">
+        <button class="lang-btn" id="langToggle" data-i18n="ui.language" aria-label="Switch language">English</button>
+        <button class="icon-btn" id="themeToggle" data-i18n-title="ui.darkMode" aria-label="Toggle theme">
+          <i data-lucide="moon"></i>
+        </button>
+        <button class="icon-btn mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+    <a href="/" class="mobile-nav-link" data-i18n="ui.backToTools">العودة للأدوات</a>
+    <a href="/#quick-tools" class="mobile-nav-link" data-i18n="nav.tools">الأدوات</a>
+    <a href="/#all-tools" class="mobile-nav-link" data-i18n="nav.allTools">جميع الأدوات</a>
+    <a href="/about.html" class="mobile-nav-link" data-i18n="nav.about">حول</a>
+  </nav>
+
+  <main class="tool-page">
+    <div class="container">
+      <!-- Tool Header -->
+      <div class="tool-page-header" id="toolHeader">
+        <div class="tool-page-icon" id="toolIcon"></div>
+        <h1 class="tool-page-title" id="toolTitle">—</h1>
+        <p class="tool-page-desc" id="toolDesc">—</p>
+      </div>
+
+      <!-- Tool Workflow -->
+      <div class="tool-workflow" id="toolWorkflow">
+        <!-- Content rendered dynamically -->
+      </div>
+    </div>
+  </main>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+</body>
+</html>

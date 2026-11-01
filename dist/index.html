@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDFly — أدوات المستندات الشاملة</title>
+  <meta name="description" content="Convert, organize, edit, and optimize your documents directly in your browser. Private by design. No uploads, no servers.">
+  <link rel="icon" type="image/png" href="/logo-badge.png">
+
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <!-- PDF.js Standalone Browser Build -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script type="module" crossorigin src="/assets/main-DfqzaQal.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/preload-helper-B5titDsp.js">
+  <link rel="stylesheet" crossorigin href="/assets/styles-YwZGikJk.css">
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <!-- Logo only without extra text -->
+      <a href="/" class="logo" id="logo" aria-label="PDFly Home">
+        <img src="/logo-badge.png" alt="PDFly" class="logo-badge-img" />
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-links" id="desktopNav" aria-label="Main navigation">
+        <a href="#quick-tools" class="nav-link" data-i18n="nav.tools">الأدوات</a>
+        <div class="nav-dropdown" id="catDropdown">
+          <button class="nav-link" data-i18n="nav.categories" aria-expanded="false" aria-haspopup="true">التصنيفات</button>
+          <div class="nav-dropdown-menu" id="catDropdownMenu" role="menu"></div>
+        </div>
+        <a href="#all-tools" class="nav-link" data-i18n="nav.allTools">جميع الأدوات</a>
+        <a href="/about.html" class="nav-link" data-i18n="nav.about">حول</a>
+      </nav>
+
+      <!-- Controls -->
+      <div class="header-controls">
+        <button class="lang-btn" id="langToggle" data-i18n="ui.language" aria-label="Switch language">English</button>
+        <button class="icon-btn" id="themeToggle" data-i18n-title="ui.darkMode" aria-label="Toggle theme">
+          <i data-lucide="moon"></i>
+        </button>
+        <button class="icon-btn mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu" aria-expanded="false">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+    <a href="#quick-tools" class="mobile-nav-link" data-i18n="nav.tools">الأدوات</a>
+    <a href="#all-tools" class="mobile-nav-link" data-i18n="nav.allTools">جميع الأدوات</a>
+    <a href="/about.html" class="mobile-nav-link" data-i18n="nav.about">حول</a>
+    <a href="/privacy.html" class="mobile-nav-link" data-i18n="nav.privacy">الخصوصية</a>
+    <div class="mobile-nav-divider"></div>
+    <div id="mobileCatLinks"></div>
+  </nav>
+
+  <main>
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="hero">
+      <div class="container hero-content">
+        <div class="hero-badge">
+          <i data-lucide="shield-check" style="width:16px;height:16px;"></i>
+          <span data-i18n="hero.privacy">ملفاتك لا تغادر جهازك أبداً</span>
+        </div>
+
+        <h1 class="hero-title" data-i18n="hero.title">كل اللي محتاجه علشان تتعامل مع ملفاتك بسهولة</h1>
+        <p class="hero-subtitle" data-i18n="hero.subtitle">حوّل، نظّم، عدّل، وحسّن مستنداتك مباشرة في متصفحك. مصمم للخصوصية.</p>
+
+        <div class="upload-area" id="heroUpload" role="button" tabindex="0" aria-label="Upload file">
+          <div class="upload-icon">
+            <i data-lucide="upload-cloud"></i>
+          </div>
+          <div class="upload-text" data-i18n="hero.upload">اختر ملفاً أو اسحبه هنا للبدء مباشرة</div>
+          <div class="upload-hint">معالجة فورية فائقة السرعة وآمنة 100% في جهازك</div>
+          <button class="browse-btn" id="heroBrowseBtn">
+            <i data-lucide="folder-open" style="width:18px;height:18px;"></i>
+            <span data-i18n="hero.browse">تصفح الملفات</span>
+          </button>
+          <div class="upload-formats">
+            <span class="format-tag">PDF</span>
+            <span class="format-tag">DOCX</span>
+            <span class="format-tag">XLSX</span>
+            <span class="format-tag">PPTX</span>
+            <span class="format-tag">TXT</span>
+            <span class="format-tag">JPG</span>
+            <span class="format-tag">PNG</span>
+          </div>
+          <div class="upload-privacy">
+            <i data-lucide="lock" style="width:14px;height:14px;"></i>
+            <span data-i18n="hero.privacy">ملفاتك لا تغادر جهازك أبداً</span>
+          </div>
+
+          <!-- File Selected Display (ثابت ومباشر في نفس الصفحة) -->
+          <div class="selected-file-preview" id="selectedFilePreview" style="display:none;">
+            <div class="selected-file-badge">
+              <i data-lucide="file-check" style="width:24px;height:24px;color:var(--accent);"></i>
+              <div class="selected-file-meta">
+                <span class="selected-file-name" id="selectedFileName">file.pdf</span>
+                <span class="selected-file-size" id="selectedFileSize">0 KB</span>
+              </div>
+              <button type="button" class="selected-file-remove" id="selectedFileRemoveBtn" title="إلغاء الملف">
+                <i data-lucide="x" style="width:16px;height:16px;"></i>
+              </button>
+            </div>
+          </div>
+
+          <input type="file" id="heroFileInput" class="sr-only"
+                 accept=".pdf,.docx,.doc,.xlsx,.xls,.pptx,.ppt,.txt,.jpg,.jpeg,.png,.webp,.bmp">
+        </div>
+
+        <!-- Quick Interactive Converter Selector (من إيه لإيه) -->
+        <div class="quick-convert-card" id="quickConvertCard">
+          <div class="quick-convert-title">
+            <i data-lucide="arrow-left-right" style="width:20px;height:20px;color:var(--accent);"></i>
+            <span>تحويل سريع ومباشر (حدد الصيغ وانطلق)</span>
+          </div>
+          <div class="quick-convert-controls">
+            <div class="convert-field">
+              <label class="convert-label">تحويل من:</label>
+              <select id="quickConvertFrom" class="convert-select">
+                <option value="pdf">PDF</option>
+                <option value="docx">Word (DOCX)</option>
+                <option value="xlsx">Excel (XLSX)</option>
+                <option value="pptx">PowerPoint (PPTX)</option>
+                <option value="img">صور (JPG / PNG)</option>
+                <option value="txt">نص (TXT)</option>
+              </select>
+            </div>
+            <div class="convert-arrow">
+              <i data-lucide="arrow-right" class="arrow-icon-dir" style="width:22px;height:22px;"></i>
+            </div>
+            <div class="convert-field">
+              <label class="convert-label">تحويل إلى:</label>
+              <select id="quickConvertTo" class="convert-select">
+                <option value="word">Word (DOCX)</option>
+                <option value="excel">Excel (XLSX)</option>
+                <option value="ppt">PowerPoint (PPTX)</option>
+                <option value="images">صور (JPG / PNG)</option>
+                <option value="txt">نص (TXT)</option>
+                <option value="html">صفحة HTML</option>
+              </select>
+            </div>
+            <button class="btn btn-primary quick-convert-btn" id="quickConvertGoBtn">
+              <i data-lucide="sparkles" style="width:18px;height:18px;"></i>
+              <span>ابدأ التحويل</span>
+            </button>
+          </div>
+
+          <!-- Dynamic tool extra inputs (e.g. watermark text, page numbers position) -->
+          <div class="quick-convert-extra" id="quickConvertExtra" style="display:none;margin-top:16px;padding-top:14px;border-top:1px solid var(--border-primary);">
+            <div id="quickConvertExtraFields"></div>
+          </div>
+        </div>
+
+        <!-- In-page Direct Processing Workflow -->
+        <div class="direct-process-workflow" id="directWorkflow" style="display:none;"></div>
+      </div>
+    </section>
+
+    <!-- ==================== QUICK TOOLS ==================== -->
+    <section class="section quick-tools-section" id="quick-tools">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="quick.title">أدوات سريعة</h2>
+          <p class="section-subtitle" data-i18n="quick.subtitle">الأدوات الأكثر استخداماً في متناول يدك</p>
+        </div>
+        <div class="quick-tools-grid" id="quickToolsGrid"></div>
+      </div>
+    </section>
+
+    <!-- ==================== HOW IT WORKS ==================== -->
+    <section class="section how-section" id="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="how.title">كيف يعمل</h2>
+          <p class="section-subtitle" data-i18n="how.subtitle">ثلاث خطوات بسيطة</p>
+        </div>
+        <div class="how-steps">
+          <div class="how-step">
+            <div class="how-step-num">1</div>
+            <h3 class="how-step-title" data-i18n="how.step1.title">اختر ملفك</h3>
+            <p class="how-step-desc" data-i18n="how.step1.desc">اسحب وأفلت أو اختر الملف من جهازك</p>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">2</div>
+            <h3 class="how-step-title" data-i18n="how.step2.title">المعالجة في متصفحك</h3>
+            <p class="how-step-desc" data-i18n="how.step2.desc">يتم تحويل ملفك مباشرة في المتصفح بدون أي سيرفر</p>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">3</div>
+            <h3 class="how-step-title" data-i18n="how.step3.title">حمّل النتيجة</h3>
+            <p class="how-step-desc" data-i18n="how.step3.desc">احصل على ملفك المحوّل فوراً</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ALL TOOLS / CATEGORIES ==================== -->
+    <section class="section categories-section" id="all-tools">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="cat.title">جميع الأدوات</h2>
+          <p class="section-subtitle" data-i18n="cat.subtitle">استكشف مجموعة أدواتنا الكاملة</p>
+        </div>
+        <div id="categoriesContainer"></div>
+      </div>
+    </section>
+
+    <!-- ==================== PRIVACY ==================== -->
+    <section class="section privacy-section" id="privacy">
+      <div class="container">
+        <div class="privacy-content">
+          <div class="privacy-text">
+            <h2 data-i18n="privacy.title">خصوصيتك أولاً</h2>
+            <div class="subtitle" data-i18n="privacy.subtitle">معالجة كاملة على جهازك</div>
+            <p data-i18n="privacy.desc">جميع عمليات التحويل والمعالجة تتم محلياً في متصفحك. ملفاتك لا تُرسل إلى أي سيرفر خارجي. نقوم فقط بتحميل محركات المعالجة (مكتبات برمجية ثابتة)، أما محتوى ملفاتك فيبقى على جهازك دائماً.</p>
+            <div class="privacy-points">
+              <div class="privacy-point">
+                <span class="privacy-point-icon"><i data-lucide="check" style="width:16px;height:16px;"></i></span>
+                <span data-i18n="privacy.point1">لا رفع ملفات لأي سيرفر</span>
+              </div>
+              <div class="privacy-point">
+                <span class="privacy-point-icon"><i data-lucide="check" style="width:16px;height:16px;"></i></span>
+                <span data-i18n="privacy.point2">لا تخزين سحابي</span>
+              </div>
+              <div class="privacy-point">
+                <span class="privacy-point-icon"><i data-lucide="check" style="width:16px;height:16px;"></i></span>
+                <span data-i18n="privacy.point3">لا حسابات مستخدمين</span>
+              </div>
+              <div class="privacy-point">
+                <span class="privacy-point-icon"><i data-lucide="check" style="width:16px;height:16px;"></i></span>
+                <span data-i18n="privacy.point4">معالجة كاملة في المتصفح</span>
+              </div>
+            </div>
+          </div>
+          <div class="privacy-visual">
+            <div class="privacy-shield">
+              <i data-lucide="shield-check" style="width:64px;height:64px;color:var(--success);"></i>
+              <div class="privacy-shield-text" data-i18n="privacy.subtitle">معالجة كاملة على جهازك</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo" aria-label="PDFly">
+            <img src="/logo-badge.png" alt="PDFly Logo" class="logo-badge-img" />
+          </a>
+          <p class="footer-tagline" data-i18n="footer.tagline">كل ملفاتك. كل أدواتك. في مكان واحد.</p>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title" data-i18n="footer.tools">الأدوات</h3>
+          <div id="footerToolLinks"></div>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title" data-i18n="footer.company">الشركة</h3>
+          <a href="/about.html" class="footer-link" data-i18n="footer.about">حول PDFly</a>
+          <a href="/privacy.html" class="footer-link" data-i18n="footer.privacyPolicy">سياسة الخصوصية</a>
+          <a href="/terms.html" class="footer-link" data-i18n="footer.terms">شروط الاستخدام</a>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title" data-i18n="footer.legal">معلومات قانونية</h3>
+          <a href="/privacy.html" class="footer-link" data-i18n="footer.privacyPolicy">سياسة الخصوصية</a>
+          <a href="/terms.html" class="footer-link" data-i18n="footer.terms">شروط الاستخدام</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">© 2026 PDFly. جميع الحقوق محفوظة.</span>
+        <div class="header-controls">
+          <button class="lang-btn" id="footerLangToggle" data-i18n="ui.language">English</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+</body>
+</html>
