@@ -153,7 +153,7 @@ function renderQuickTools() {
     const tool = getToolById(toolId);
     if (!tool) return '';
     return `
-      <a href="/tool.html?id=${tool.id}" class="tool-card" data-category="${tool.category}" data-tool-id="${tool.id}">
+      <a href="tool.html?id=${tool.id}" class="tool-card" data-category="${tool.category}" data-tool-id="${tool.id}">
         <div class="tool-card-icon">
           ${lucideIcon(tool.icon, 22)}
         </div>
@@ -196,7 +196,7 @@ function renderCategories() {
         </div>
         <div class="category-tools-grid">
           ${tools.map((tool) => `
-            <a href="/tool.html?id=${tool.id}" class="category-tool-item" data-tool-id="${tool.id}">
+            <a href="tool.html?id=${tool.id}" class="category-tool-item" data-tool-id="${tool.id}">
               <div class="category-tool-icon" style="background:${colors.bg};color:${colors.color};">
                 ${lucideIcon(tool.icon, 16)}
               </div>
